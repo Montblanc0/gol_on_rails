@@ -1,0 +1,156 @@
+@font-face
+    font-family: pixel
+    src: font-url('PressStart2P-Regular.ttf') format('truetype'), font-url('PressStart2P-Regular.woff') format('woff'), font-url('PressStart2P-Regular.woff2') format('woff2')
+    font-weight: 400
+    font-style: italic
+
+$bordo: 1px solid #000
+
+*
+    box-sizing: border-box
+    margin: 0
+    padding: 0
+    font-family: pixel, sans-serif
+
+\:root
+    font-size: 16px
+    @media screen and (max-width: 780px)
+        font-size: 12px
+
+body
+    display: grid
+    justify-content: center
+    background: #000
+
+.wrapper
+    max-width: 80dvw
+    max-width: 80vw
+    place-self: center
+    @media screen and (max-width: 780px)
+        max-width: 100%
+
+.hidden
+    pointer-events: none
+    position: fixed
+    top: -9999px
+    z-index: -1
+    opacity: 0
+
+button
+    border: none
+    background: none
+    cursor: pointer
+    &.disabled
+        cursor: revert
+
+header
+    width: 100vw
+    width: 100dvw
+    font-family: pixel
+    display: flex
+    justify-content: center
+    align-items: center
+    place-content: space-around
+    text-align: center
+    button.header-button
+        padding: 10px
+        font-size: clamp(.5rem, 2.2vw, 1rem)
+        color: #fff
+        &:hover
+            background-color: #fff
+            color: #000
+    .header-center
+        flex: .5
+        display: flex
+        place-content: space-between
+        align-items: center
+        h1
+            font-size: clamp(.8rem, 2.2vw, 1.5rem)
+            min-width: 193px
+            color: #fff
+            @media screen and (max-width: 780px)
+                min-width: min-content
+
+.alien
+    height: 40px
+    width: 40px
+    background: center center / contain no-repeat
+    background-image: asset-url('alien')
+    &.active
+        background-image: asset-url('moving-alien')
+
+.gol-container
+    margin: 20px auto
+    .gol
+        &.active
+            pointer-events: none
+        #table
+            .row
+                display: flex
+                justify-content: center
+                .cell
+                    button
+                        flex: 1
+                        display: table
+                        width: clamp(2px, 2.5vw, 20px)
+                        height: clamp(2px, 2.5vw, 20px)
+                        background-color: #fff
+                        border-left: $bordo
+                        border-top: $bordo
+                        cursor: pointer
+                        &.alive
+                            background-color: #000
+                .cell:last-child button
+                    border-right: $bordo
+            .row:last-child button
+                border-bottom: $bordo
+
+.clear
+    clear: both
+
+.controls
+    display: flex
+    justify-content: center
+    margin-top: 20px
+    column-gap: 10px
+    *
+        flex: 1
+    .button_to
+        display: flex
+        select
+            flex: 1
+            text-align: center
+    #gen
+        place-self: flex-end
+        filter: invert(1)
+        pointer-events: none
+    select
+        border: 0
+        cursor: pointer
+        option
+            font-family: sans-serif
+            font-weight: bold
+
+.control
+    transition: 0
+    font-family: pixel
+    padding: 10px
+    width: fit-content
+    height: 40px
+    background: #fff
+    @media screen and (max-width: 780px)
+        font-size: clamp(.8rem, 2.5vw, 1.1rem)
+    &[disabled]
+        pointer-events: none
+    &:not([disabled]):hover
+        background-color: #000
+        color: #fff
+    &:not([disabled], select):active
+        outline: 3px solid #fff
+    &:has(a)
+        line-height: 1.5
+    a, a:visited, a:active
+        display: block
+        text-decoration: none
+        color: #000
+        height: 100%

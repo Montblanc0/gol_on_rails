@@ -1,0 +1,134 @@
+$pixel: pixel, sans-serif
+
+h2
+    font-family: $pixel
+    text-align: center
+    color: #fff
+    margin: 20px
+    font-size: 1.1rem
+
+form.table-params, form.table-import
+    text-align: center
+    max-width: 500px
+    margin: 2% auto
+    padding: 30px
+    border-radius: 10px
+    display: grid
+    grid-auto-flow: column wrap
+    gap: 30px
+    background: #fff
+    overflow: hidden
+    label,p
+        display: block
+        font-family: $pixel
+        &:is(form.table-import label)
+            cursor: pointer
+            border: 1px solid #000
+            max-width: 100px
+            margin: auto
+            background-color: #fff
+            &:active
+                filter: invert(1)
+        &:is(form.table-import p)
+            height: 16px
+            margin-top: 20px
+            font-size: .7rem
+    input
+        margin: auto
+        border: 1px solid #000
+        max-width: 100px
+        text-align: center
+        padding: 20px
+        font-size: 1.3rem
+        &[type="number"]
+            -webkit-appearance: none
+            -moz-appearance: textfield
+        &:focus
+            outline: 3px solid #000
+    button
+        padding: 20px
+    h2
+        color: #000
+        margin: 0
+        font-size: 1rem
+
+form:is(.new_user, .new_session, .edit_user, .edit_password, .edit_email, .edit_confirmation, .new_unlock, .new_password)
+    text-align: center
+    max-width: 500px
+    margin: 2% auto 10px
+    padding: 30px
+    border-radius: 10px
+    display: grid
+    grid-auto-flow: column wrap
+    gap: 30px
+    background: #fff
+    overflow: hidden
+    label
+        display: block
+        font-family: $pixel
+        margin-bottom: 5px
+    br
+        display: none
+    em, i
+        display: block
+    input
+        margin: auto
+        border: 1px solid #000
+        text-align: center
+        padding: 5px
+        font-family: sans-serif
+        font-size: 1.2rem
+        &:focus
+            outline: 3px solid #000
+        &[type="checkbox"]
+            width: 23px
+            height: 23px
+            cursor: pointer
+            margin-bottom: 5px
+            &+label
+                display: inline-block
+                margin-bottom: 0
+                margin-left: 5px
+                cursor: pointer
+        &[type="submit"], &[type="submit"]:active, &[type="submit"]:focus
+            background: none
+            font-family: $pixel
+            cursor: pointer
+            border: none
+            outline: none
+            text-transform: uppercase
+    div.actions
+        transition: .5s
+        input
+            font-size: .9rem
+            width: 100%
+            height: 56px
+        &:hover
+            background-color: #000
+            input
+                color: #fff
+
+    &~h3
+        display: none
+    &~div
+        button
+            color: #fff
+            padding: 5px
+
+form
+    &~a, &~a:visited, &~a:active
+        display: block
+        text-decoration: none
+        color: #fff
+        font-family: $pixel
+        padding: 5px
+        font-size: .8rem
+        &+br
+            display: none
+        &:first-of-type
+            margin-bottom: 5px
+    button:not(.control, .header-button)
+        transition: .7s
+        &:hover
+            background-color: #000
+            color: #fff

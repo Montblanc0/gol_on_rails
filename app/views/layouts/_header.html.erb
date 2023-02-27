@@ -1,0 +1,11 @@
+<header>
+  <%= button_to root_path, method: :get, class: 'header-button', style: params[:controller] == 'gol' ? '' : 'visibility: hidden;'  do %>
+    &nbsp;HOME&nbsp;
+  <% end %>
+  <div class="header-center">
+    <div class="alien"></div>
+    <h1>Game&nbsp;of&nbsp;Life</h1>
+    <div class="alien"></div>
+  </div>
+  <%= button_to 'LOGOUT', destroy_user_session_path, method: :delete, class: 'header-button', style: current_user ? '' : 'visibility: hidden;' %>
+</header>

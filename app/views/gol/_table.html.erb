@@ -1,0 +1,12 @@
+ <%= turbo_frame_tag 'table' do %>
+  <% (0...table.size).each do |row| %>
+    <div class="row">
+      <% (0...table.size).each do |column| %>
+        <div class="cell">
+
+          <button class="<%= table[row, column].alive? ? "alive" : "" %>" data-row="<%= row %>" data-col="<%= column %>" data-action="click->gol#toggle:event"></button>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

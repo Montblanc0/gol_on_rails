@@ -1,0 +1,28 @@
+<div data-controller="gol" class="gol-container">
+
+  <div class="gol" id="turbo_gol" data-gol-target="table">
+    <%= render 'table', table: @table %>
+  </div>
+
+  <div class="controls">
+    <button type="button" data-action="click->gol#start:prevent" data-gol-target="start" class="control">START</button>
+    <button type="button" data-action="click->gol#stop:prevent" data-gol-target="stop" style="display: none;" class="control">STOP</button>
+    <%= form_with(class: 'button_to', autocomplete: 'off') do |form| %>
+      <select name="speed" id="speed" data-gol-target="speed" class="control">
+        <option value="2000">SLOW</option>
+        <option value="1000" selected>NORMAL</option>
+        <option value="500">FAST</option>
+      </select>
+    <% end %>
+    <button type="button" id="gen" class="control">GEN <span id="current_gen"><%= current_user.board.gen || 1 %></span></button>
+  </div>
+
+  <div class="controls bottom-row">
+    <%= button_to 'RANDOM', '/gol/generate', params: { size: current_user.board.size }, data: {gol_target: 'random'}, class: 'control' %>
+    <%= button_to 'CLEAR', '/gol/clear', data: {gol_target: 'clear'}, class: 'control' %>
+    <%= button_to 'NEXT', next_gen_path, data: {gol_target: 'next'}, class: 'control'  %>
+    <%= button_to 'EXPORT', export_path(format: :json), method: :get, data: {gol_target: 'export'}, class: 'control' %>
+  </div>
+
+  <%= link_to 'stall', 'gol/stall', class: 'hidden', data: {gol_target: 'stall'}%>
+</div>

@@ -1,0 +1,22 @@
+<% if notice %>
+  <div class="flash notice">
+    <p><%= notice %></p>
+    <button class="close">X</button>
+  </div>
+<% end %>
+
+<% if alert %>
+  <div class="flash alert">
+    <p><%= alert %></p>
+    <button class="close">X</button>
+  </div>
+<% end %>
+
+<script>
+  document.querySelectorAll(".close").forEach(btn => {
+      btn.onclick = function(){
+  console.log(this);
+  this.parentElement.style.display = "none";
+      }
+  })
+</script>

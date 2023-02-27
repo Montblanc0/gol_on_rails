@@ -1,0 +1,26 @@
+<form action=<%= generate_path %> class="table-params">
+  <label for="size">Choose your board size</label>
+  <p>(10..40)</p>
+  <input type="number" min="10" max="40" value="<%= !current_user.nil? ? current_user.board.size : 10 %>" required name="size" id="size">
+  <button>GENERATE</button>
+</form>
+
+<%= form_with url: import_path, method: :post, local: true, class: 'table-import' do |form| %>
+  <h2>Import from JSON</h2>
+  <div>
+    <%= form.label :file do %>
+      <%= image_tag 'upload.png' %>
+    <% end %>
+    <p id="filename"></p>
+    <%= form.file_field :file, class: 'hidden', id: 'file' %>
+  </div>
+  <button>IMPORT</button>
+<% end %>
+
+<%= link_to "Account settings", edit_user_registration_path %>
+
+<script>
+  file.onchange = function() {
+    filename.textContent = this.files.length ? this.files[0].name : ''
+  }
+</script>

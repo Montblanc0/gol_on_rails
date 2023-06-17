@@ -1,1 +1,1 @@
-web: bin/rails db:prepare && bin/rails s -b 0.0.0.0 -p $PORT
+web: chmod +x bin/rails && bin/rails db:prepare && bin/rails s -b 0.0.0.0 -p $PORT
